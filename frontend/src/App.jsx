@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Welcome from './components/Welcome';
 import SlideNavigator from './components/SlideNavigator';
 import RSACalculator from './components/RSACalculator';
+import CaesarCipher from './components/CaesarCipher';
 import Quiz from './components/Quiz';
 import ProgressTracker from './components/ProgressTracker';
 import { slides } from './data/slides';
@@ -9,7 +10,7 @@ import api from './utils/api';
 import './App.css';
 
 function App() {
-  const [currentView, setCurrentView] = useState('welcome'); // welcome, slides, calculator, quiz
+  const [currentView, setCurrentView] = useState('welcome'); // welcome, slides, calculator, caesar, quiz
   const [currentSlide, setCurrentSlide] = useState(0);
   const [user, setUser] = useState(null);
   const [progress, setProgress] = useState([]);
@@ -90,6 +91,12 @@ function App() {
                 🧮 RSA 計算器
               </button>
               <button
+                className={`nav-btn ${currentView === 'caesar' ? 'active' : ''}`}
+                onClick={() => setCurrentView('caesar')}
+              >
+                👑 古典密碼
+              </button>
+              <button
                 className={`nav-btn ${currentView === 'quiz' ? 'active' : ''}`}
                 onClick={() => setCurrentView('quiz')}
               >
@@ -126,6 +133,10 @@ function App() {
 
         {user && currentView === 'calculator' && (
           <RSACalculator userId={user.id} />
+        )}
+
+        {user && currentView === 'caesar' && (
+          <CaesarCipher />
         )}
 
         {user && currentView === 'quiz' && (
