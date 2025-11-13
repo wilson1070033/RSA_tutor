@@ -1,0 +1,471 @@
+.caesar-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.caesar-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.caesar-header h2 {
+  font-size: 2.5rem;
+  margin: 0 0 0.5rem 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.caesar-header p {
+  font-size: 1.2rem;
+  opacity: 0.95;
+}
+
+.caesar-content {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* 模式選擇器 */
+.mode-selector {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.mode-btn {
+  flex: 1;
+  min-width: 150px;
+  padding: 1rem;
+  border: 2px solid #e0e0e0;
+  background: white;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mode-btn:hover {
+  border-color: #667eea;
+  background: #f8f9ff;
+}
+
+.mode-btn.active {
+  border-color: #667eea;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+/* 輸入區域 */
+.input-section {
+  margin-bottom: 2rem;
+}
+
+.input-group {
+  margin-bottom: 1.5rem;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.input-group textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 2px;
+  resize: vertical;
+  transition: all 0.3s ease;
+}
+
+.input-group textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* 移位控制 */
+.shift-control {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+.shift-control label {
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #667eea;
+  text-align: center;
+}
+
+.shift-slider {
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+  background: #e0e0e0;
+  outline: none;
+  margin-bottom: 1rem;
+}
+
+.shift-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  cursor: pointer;
+}
+
+.shift-numbers {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+  gap: 0.5rem;
+}
+
+.shift-num {
+  padding: 0.5rem;
+  border: 2px solid #e0e0e0;
+  background: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 600;
+}
+
+.shift-num:hover {
+  border-color: #667eea;
+  background: #f8f9ff;
+}
+
+.shift-num.active {
+  border-color: #667eea;
+  background: #667eea;
+  color: white;
+}
+
+/* 操作按鈕 */
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  flex: 1;
+  min-width: 120px;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.encrypt-btn {
+  background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+  color: white;
+}
+
+.decrypt-btn {
+  background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
+  color: white;
+}
+
+.bruteforce-btn {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: white;
+}
+
+.clear-btn {
+  background: #6c757d;
+  color: white;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 結果區域 */
+.result-section {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+.result-section h3 {
+  margin: 0 0 1rem 0;
+  color: #333;
+}
+
+.result-box {
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.result-box.encrypted {
+  background: linear-gradient(135deg, rgba(74, 222, 128, 0.1) 0%, rgba(34, 197, 94, 0.1) 100%);
+  border: 2px solid #22c55e;
+}
+
+.result-box.decrypted {
+  background: linear-gradient(135deg, rgba(248, 113, 113, 0.1) 0%, rgba(239, 68, 68, 0.1) 100%);
+  border: 2px solid #ef4444;
+}
+
+.result-text {
+  font-size: 1.8rem;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 3px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1rem;
+  word-break: break-all;
+}
+
+.result-info {
+  font-size: 1rem;
+  color: #666;
+  padding: 0.8rem;
+  background: white;
+  border-radius: 6px;
+}
+
+/* 字母對照圖 */
+.alphabet-chart {
+  margin-top: 1rem;
+}
+
+.chart-row {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+
+.chart-label {
+  min-width: 60px;
+  font-weight: 600;
+  color: #667eea;
+}
+
+.chart-letters {
+  display: flex;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+}
+
+.chart-letter {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 5px;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+}
+
+.chart-letter.original {
+  background: #e0e7ff;
+  color: #4338ca;
+}
+
+.chart-letter.encrypted {
+  background: #dcfce7;
+  color: #166534;
+}
+
+/* 暴力破解結果 */
+.bruteforce-hint {
+  color: #667eea;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.bruteforce-results {
+  max-height: 400px;
+  overflow-y: auto;
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.bruteforce-item {
+  padding: 0.8rem;
+  margin: 0.5rem 0;
+  background: #f8f9fa;
+  border-radius: 6px;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.bruteforce-item:hover {
+  background: #e9ecef;
+  transform: translateX(5px);
+}
+
+.bruteforce-shift {
+  min-width: 80px;
+  font-weight: 600;
+  color: #667eea;
+}
+
+.bruteforce-text {
+  font-family: 'Courier New', monospace;
+  letter-spacing: 2px;
+  flex: 1;
+}
+
+.bruteforce-note {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #fef3c7;
+  border-left: 4px solid #f59e0b;
+  border-radius: 6px;
+  font-weight: 600;
+  color: #78350f;
+}
+
+/* 說明區域 */
+.info-section {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+  border-radius: 10px;
+  border-left: 4px solid #667eea;
+}
+
+.info-section h3 {
+  margin: 0 0 1rem 0;
+  color: #667eea;
+}
+
+.info-content {
+  display: grid;
+  gap: 1rem;
+}
+
+.info-item strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.info-item p,
+.info-item ul {
+  margin: 0;
+  color: #555;
+  line-height: 1.6;
+}
+
+.info-item ul {
+  padding-left: 1.5rem;
+}
+
+/* 字母對照表 */
+.alphabet-reference {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+}
+
+.alphabet-reference h3 {
+  margin: 0 0 1rem 0;
+  color: #333;
+  text-align: center;
+}
+
+.alphabet-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.alphabet-row {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.row-label {
+  min-width: 60px;
+  font-weight: 600;
+  color: #667eea;
+}
+
+.alphabet-cell {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  border-radius: 4px;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+
+.alphabet-cell.original {
+  background: #e0e7ff;
+  color: #4338ca;
+}
+
+.alphabet-cell.encrypted {
+  background: #dcfce7;
+  color: #166534;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .caesar-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .mode-selector {
+    flex-direction: column;
+  }
+
+  .mode-btn {
+    min-width: 100%;
+  }
+
+  .shift-numbers {
+    grid-template-columns: repeat(auto-fill, minmax(35px, 1fr));
+  }
+
+  .result-text {
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+  }
+
+  .alphabet-cell {
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    font-size: 0.8rem;
+  }
+
+  .row-label {
+    min-width: 50px;
+    font-size: 0.9rem;
+  }
+}
